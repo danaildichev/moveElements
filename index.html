@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+	
+		<title>Move Elements</title>
+		
+		<link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	
+	</head>
+  
+	<body>
+	
+		<div class="text-2xl">
+			<p>This demo uses Tailwind, Daisy UI, and FontAwesome.</p>
+		</div>
+		
+		<!-- main content -->
+		<main>
+
+			<!--******************************************************-->
+			<!-- section: -->
+			<section class="py-6">
+
+				<div class="container mx-auto px-6 sm:px-0">
+
+					<div class="bg-base-200 p-6 rounded-2xl">
+
+						<!-------------------->
+						<!-- section header -->
+						<header class="">
+							<div class="pb-3">
+								<h3 class="text-4xl mr-4 pl-6 block md:inline font-bold text-primary">Translate X/Y<span class="ml-1">:</span></h3>
+								<p class="text-3xl block pl-6 md:pl-0 md:inline">For moving to & from a spot</p>
+							</div>
+							<div class="glass h-3 shadow-none rounded-b-2xl"></div>
+						</header>
+						<!-- end section header -->
+						<!------------------------>
+
+						<!---------------------->
+						<!-- section contents -->
+						<div class="max-w-fit mx-auto">
+
+							<div class="flex flex-row mt-3">
+
+								<!-- btn: move offscreen left and toggle slide -->
+								<div class="bg-rose-950 m-6 mr-0 p-6 rounded-l-2xl">
+									<button id="btnMove_left" class="btn btn-secondary min-w-[50px] transition-transform duration-1000" onclick="translateAndSlideLeft()">
+										<i class="fa-solid fa-left-long"></i>
+									</button>
+								</div>
+
+								<!-- btn: move offscreen right and toggle slide -->
+								<div class="bg-rose-950 m-6 ml-0 p-6 <!--rounded-r-2xl-->">
+									<button id="btnMove_right" class="btn btn-secondary min-w-[50px] transition-transform duration-1000" onclick="translateAndSlideRight()">
+										<i class="fa-solid fa-right-long"></i>
+									</button>
+								</div>
+
+								<!-- btn: move left -->
+								<div class="bg-violet-950 my-6 py-6 pr-3 pl-6">
+									<button id="btnMove_left" class="btn btn-primary min-w-[50px] transition-transform duration-1000" onclick="movePanel1.translate('panel1', 'left', '150px')">
+										<i class="fa-solid fa-left-long"></i>
+									</button>
+								</div>
+
+								<!-- btn: move up -->
+								<div class="bg-violet-950 my-6 py-6 pr-3">
+									<button id="btnMove_up" class="btn btn-primary min-w-[50px]" onclick="movePanel1.translate('panel1', 'up', '150px')">
+										<i class="fa-solid fa-up-long"></i>
+									</button>
+								</div>
+
+								<!-- btn: move back to origin -->
+								<div class="bg-violet-950 my-6 py-6 pr-3">
+									<button id="btnMove_origin" class="btn btn-primary min-w-[50px]" onclick="movePanel1.translate('panel1', 'origin')">
+										<i class="fa-solid fa-rotate-left"></i>
+									</button>
+								</div>
+
+								<!-- btn: move down -->
+								<div class="bg-violet-950 my-6 py-6 pr-3">
+									<button id="btnMove_down" class="btn btn-primary min-w-[50px]" onclick="movePanel1.translate('panel1', 'down', '150px')">
+										<i class="fa-solid fa-down-long"></i>
+									</button>
+								</div>
+
+								<!-- btn: move right -->
+								<div class="bg-violet-950 my-6 py-6 pr-3">
+									<button id="btnMove_right" class="btn btn-primary min-w-[50px]" onclick="movePanel1.translate('panel1', 'right', '150px')">
+										<i class="fa-solid fa-right-long"></i>
+									</button>
+								</div>
+
+								<!-- btn: from origin -->
+								<div class="bg-violet-950 my-6 py-6 pr-6 rounded-r-2xl">
+									<div class="tooltip tooltip-neutral" data-tip="('30px, 30px')">
+										<button id="btnMove_fromOrigin" class="btn btn-primary min-w-[50px]" onclick="movePanel1.translate('panel1', 'fromOrigin', '30px, 30px')">
+											<i class="fa-solid fa-crosshairs"></i>
+										</button>
+									</div>
+								</div>
+
+							</div>
+
+
+						</div>
+
+						<!-- panels container -->
+						<div class="overflow-hidden p-6 mx-24">
+
+							<div id="panel1" class="transition-all duration-1000 fade faded-in scale-y-100 max-h-[500px]">
+
+								<!-- checkbox for slide toggle -->
+								<input type="checkbox" id="slideChk_panel1" class="hidden" checked>
+
+								<div class="mb-6 p-3 bg-base-200 rounded-2xl border-2 border-amber-600">
+									<p class="text-xl">Panel 1</p>
+									<p>
+										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet blanditiis delectus explicabo facere inventore itaque maxime nostrum numquam odio odit officiis perferendis quo rerum suscipit unde ut, veniam voluptates voluptatibus!</span><span>Ad aliquam blanditiis consequuntur, dignissimos dolor dolores fuga impedit, ipsam magni mollitia nulla odit quaerat quidem rem rerum, temporibus totam. Consectetur debitis fugiat ipsam laboriosam maiores nihil ratione suscipit vero?</span><span>Adipisci alias aspernatur atque commodi corporis debitis dicta dignissimos dolores dolorum ea earum esse eum exercitationem explicabo facilis ipsam laboriosam minima odio porro quidem reprehenderit suscipit temporibus voluptates, voluptatibus, voluptatum.</span><span>A ad animi aperiam, beatae blanditiis commodi consectetur culpa, cum deserunt ducimus eaque earum ex facilis impedit nesciunt nostrum officiis optio pariatur quos repellat saepe sed unde ut vitae, voluptatibus.</span>
+									</p>
+								</div>
+							</div>
+
+
+							<div id="panel2" class="transition-transform duration-1000">
+								<div class="mb-6 p-3 bg-base-200 rounded-2xl border-2 border-neutral">
+									<p class="text-xl">Panel 2</p>
+									<p>
+										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet blanditiis delectus explicabo facere inventore itaque maxime nostrum numquam odio odit officiis perferendis quo rerum suscipit unde ut, veniam voluptates voluptatibus!</span><span>Ad aliquam blanditiis consequuntur, dignissimos dolor dolores fuga impedit, ipsam magni mollitia nulla odit quaerat quidem rem rerum, temporibus totam. Consectetur debitis fugiat ipsam laboriosam maiores nihil ratione suscipit vero?</span><span>Adipisci alias aspernatur atque commodi corporis debitis dicta dignissimos dolores dolorum ea earum esse eum exercitationem explicabo facilis ipsam laboriosam minima odio porro quidem reprehenderit suscipit temporibus voluptates, voluptatibus, voluptatum.</span><span>A ad animi aperiam, beatae blanditiis commodi consectetur culpa, cum deserunt ducimus eaque earum ex facilis impedit nesciunt nostrum officiis optio pariatur quos repellat saepe sed unde ut vitae, voluptatibus.</span>
+									</p>
+								</div>
+							</div>
+
+							<div id="panel3" class="transition-transform duration-1000">
+								<div class="mb-6 p-3 bg-base-200 rounded-2xl border-2 border-neutral">
+									<p class="text-xl">Panel 3</p>
+									<p>
+										<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dolorem facere hic maiores possimus! Cum dolor, earum eius explicabo illo ipsa, nisi non sed sequi tempore veniam veritatis, voluptate voluptatum.</span><span>Debitis earum mollitia nulla provident soluta. Aliquam consectetur consequuntur deleniti deserunt dolor eos esse fugiat inventore ipsa iste itaque molestiae natus optio, quidem quos repudiandae rerum sint tempore, ullam voluptatibus.</span><span>Eveniet excepturi molestiae nam quae tempora? Deserunt explicabo illo ratione! Amet assumenda, consequatur cum dolore error eveniet facere fuga harum laudantium magnam odio officiis omnis optio sequi ullam! Nihil, rerum?</span><span>Accusantium aliquam assumenda autem commodi consequatur cum delectus dolore dolores, ea exercitationem, expedita inventore ipsum libero mollitia perspiciatis recusandae rem repudiandae rerum sint suscipit, ut veritatis voluptas! Perspiciatis, sint, suscipit.</span><span>Amet architecto atque beatae dolor, dolorum eius, eligendi est harum, maiores minus molestiae mollitia odio possimus quia quis rem temporibus. At eaque eius fuga id ipsam rem tempora voluptate voluptatem?</span>
+									</p>
+								</div>
+							</div>
+
+						</div>
+						<!-- end panels container -->
+
+						<!-- end section contents -->
+						<!-------------------------->
+
+					</div>
+
+
+
+				</div>
+
+			</section>
+			<!-- end section: -->
+			<!--******************************************************-->
+
+		</main>
+		<!-- end main content -->
+
+	
+	</body>
+	
+	<script src="translate.js"></script>
+	<script src="slide.js"></script>
+	
+	<script>
+
+        const movePanel1 = new Translate();
+
+        // ------------------------------
+
+        slideElsLeft =
+            {
+                checkBox: 'slideChk_panel1',
+                container: 'panel1',
+                icon: 'btnMove_left',
+            }
+
+        slideElsRight =
+            {
+                checkBox: 'slideChk_panel1',
+                container: 'panel1',
+                icon: 'btnMove_right',
+            }
+
+        // init Slide for pane 1 to the left
+        const slide1Left = new Slide(slideElsLeft.checkBox, slideElsLeft.container, 'scale', 1000, false, 1000, false, 'max-h-[500px]', slideElsLeft.icon, 1000, 1000);
+
+        // init Slide for pane 1 to the right
+        const slide1Right = new Slide(slideElsRight.checkBox, slideElsRight.container, 'scale', 1000, false, 1000, false, 'max-h-[500px]', slideElsRight.icon, 1000, 1000);
+
+        // left
+        function translateAndSlideLeft()
+        {
+            if (slide1Left.isChecked())
+            {
+				document.getElementById('btnMove_right').classList.toggle('btn-disabled');
+				
+                movePanel1.translate('panel1', 'left', '1500px');
+                setTimeout(() =>
+                {
+                    slide1Left.toggleSlide();
+
+                }, 500);
+            }
+
+            else
+            {
+                slide1Left.toggleSlide();
+                setTimeout(() =>
+                {
+                    movePanel1.translate('panel1', 'origin');
+					setTimeout(() =>
+					{
+						document.getElementById('btnMove_right').classList.toggle('btn-disabled');
+					
+					}, 1300);
+
+                }, 500);
+            }
+        }
+
+        // right
+        function translateAndSlideRight()
+        {
+            if (slide1Right.isChecked())
+            {
+				document.getElementById('btnMove_left').classList.toggle('btn-disabled');
+			
+                movePanel1.translate('panel1', 'right', '1500px');
+                setTimeout(() =>
+                {
+                    slide1Right.toggleSlide();
+
+                }, 500);
+            }
+
+            else
+            {
+                slide1Right.toggleSlide();
+                setTimeout(() =>
+                {
+                    movePanel1.translate('panel1', 'origin');
+					setTimeout(() =>
+					{
+						document.getElementById('btnMove_left').classList.toggle('btn-disabled');
+					
+					}, 1300);
+
+                }, 500);
+            }
+        }
+
+    </script>
+	
+</html>
