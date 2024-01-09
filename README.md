@@ -45,7 +45,7 @@ Javascript
 
 ```javascript
     // if you instantiate using example 1 you'd have to specify those three arguments every time you use translate()
-    moveElement.translate('panel1', 'down', '100px');
+    moveElement.translate('panel1', 'left', '100px');
 
     // if you instantiate using example 2, you would not use any arguments
     moveElement.translate();
