@@ -57,7 +57,7 @@ The following code comes from my site where I am using Tailwind, Daisy UI, Font 
 
 ```html
 <!-- button: move left -->
-<button id="btn-moveLeft" class="btn btn-primary" onclick="movePanel1.translate('panel1', 'left', '150px')">
+<button id="btn-moveLeft" class="btn btn-primary" onclick="movePanel1.translate('panel1', 'left', '100px')">
     <i class="fa-solid fa-left-long"></i>
 </button>
 
