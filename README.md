@@ -53,7 +53,7 @@ Javascript
 
 HTML
 
-The following code comes from my site where I am using Tailwind, Daisy UI, Font Awesome.
+The following code comes from the live demo where I am using Tailwind, Daisy UI, Font Awesome.
 
 ```html
 <!-- button: move left -->
